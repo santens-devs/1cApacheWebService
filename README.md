@@ -56,6 +56,21 @@
 Для размещения нового дистрибутива платформы нужно создать каталог новой версии дистрибутива в каталоге дистрибутивов конфигурации web-сервера:
 ![image](https://user-images.githubusercontent.com/1051804/142213817-b93916f6-0ad7-4fa5-a731-d7e658efef2c.png)
 
+В каталоге версии дистрибутива необходимо разместить deb-пакеты:
+- 1c-enterprise83-common_`version`_amd64.deb
+- 1c-enterprise83-server_`version`_amd64.deb
+- 1c-enterprise83-ws_`version`_amd64.deb
+
+Далее нужно распаковать данные deb-пакеты в каталог версии дистрибутива. Находясь в каталоге версии дистрибутива нужно выполнить комманды:
+```sh
+dpkg-deb --extract 1c-enterprise83-common_`version`_amd64.deb .
+dpkg-deb --extract 1c-enterprise83-server_`version`_amd64.deb .
+dpkg-deb --extract 1c-enterprise83-ws_`version`_amd64.deb .
+```
+
+Долшна получиться следующая структура подкаталогов:
+![image](https://user-images.githubusercontent.com/1051804/142215379-360ee412-b59a-44e0-a191-021114ae578b.png)
+
 
 
 [1]: https://github.com/santens-devs/1cApacheWebService/files/7555017/vrd.pdf "VRD"
