@@ -83,4 +83,6 @@ ln -s ./distrib/`version`/opt/1C/v8.3/x86_64 ./platform
 
 После чего можно перезагружать либо службу `sudo systemctl restart apache2.service` либо ОС целиком `sudo reboot`.
 
+Если apach2 не стартует модно проверить ошибки командой `journalctl -xe`
+
 [1]: https://github.com/santens-devs/1cApacheWebService/files/7555017/vrd.pdf "VRD"
