@@ -68,9 +68,19 @@ dpkg-deb --extract 1c-enterprise83-server_`version`_amd64.deb .
 dpkg-deb --extract 1c-enterprise83-ws_`version`_amd64.deb .
 ```
 
-Долшна получиться следующая структура подкаталогов:
+Должна получиться следующая структура подкаталогов:
 ![image](https://user-images.githubusercontent.com/1051804/142215379-360ee412-b59a-44e0-a191-021114ae578b.png)
 
+Далее необходимо обновить ссылку на текущую конфигурацию платформы 1с, используемую web-сервером при загрузке модуля `wsap24.so`.
+Для этого, находясь в корневом каталоге конфигурации веб сервиса,
+![image](https://user-images.githubusercontent.com/1051804/142216518-16915c73-b2bc-48df-8d43-2d48c5928f84.png)
 
+нужно выполнить команду создания ссылки на дистрибутив платформы 1С.
+```sh
+unlink ./platform
+ln -s ./distrib/version/opt/1C/v8.3/x86_64 ./platform
+```
+
+После чего можно перезагружать либо службу `sudo systemctl restart apache2.service` либо ОС целиком `sudo reboot`.
 
 [1]: https://github.com/santens-devs/1cApacheWebService/files/7555017/vrd.pdf "VRD"
