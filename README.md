@@ -91,7 +91,8 @@ ln -s ./distrib/`version`/opt/1C/v8.3/x86_64 ./platform
 ```sh
 git add .
 git commit -a -m "Коментарий измменений"
-git push
 ```
+
+`git status` не должен показывать незафиксированных изменений. Если все хорошо, заливаем в репозиторий `git push`
 
 [1]: https://github.com/santens-devs/1cApacheWebService/files/7555017/vrd.pdf "VRD"
