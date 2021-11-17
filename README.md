@@ -1,4 +1,4 @@
-![Схема настроек apache2 для 1С](https://user-images.githubusercontent.com/1051804/142284072-deb0d052-4ee9-42de-a186-d11f342bd3ce.png)
+![Схема настроек apache2 для 1С](https://user-images.githubusercontent.com/1051804/142284300-255c1be0-b657-44ac-b054-4a0db8ca9194.png)
 
 # Конфигурация web-сервера apache2, для размещения сервисов 1С:Предприятие
 
