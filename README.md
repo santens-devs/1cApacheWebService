@@ -16,3 +16,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <repository connectString="tcp://192.168.0.1"/>
 ```
+## Публикация web-сервисов 1С
+Для публикации используются файлы формата VDR. Данные файлы служат для настройки веб-клиента, использования интернет-сервисов и находятся в каталоге виртуального приложения.
+
+### Формат VDR
+Корневым элементом конфигурационного файла является `<point>`, который определяет настройки виртуального ресурса. Он может содержать по одному элементу `<zones>`, `<ws>`, `<pool>`, `<debug>`, `<openid>`, `<openidconnect>`, `<exitURL>`, `<standardOData>`, `<analytics>` и `<progressiveWebApplication>`. При этом в элементе `<ws>` допустимо несколько вложенных элементов `<point>`, а для элемента `<zones>` допустимо несколько вложенных элементов `<zone>`:
+```xml
+<point...>
+    <ws...>
+        <point>...</point>
+            <zones>
+                <zone>...</zone>
+                <zone>...</zone>
+            </zones>
+        <point>...</point>
+    </ws>
+    <httpServices>
+        <service>...<service/>
+    </httpServices>
+    <pool.../>
+    <debug.../>
+    <openid>
+        <rely... />
+        <provider>
+            <lifetime>...</lifetime>
+        </provider>
+    </openid>
+    <openidconnect.../>
+    <exitURL>
+        ...
+    </exitURL>
+    <standardOData.../>
+    <analytics.../>
+    <progressiveWebApplication.../>
+</point>
+```
