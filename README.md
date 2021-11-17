@@ -52,5 +52,10 @@
 </point>
 ```
 
+# Процесс обновления платформы 1С
+Для размещения нового дистрибутива платформы нужно создать каталог новой версии дистрибутива в каталоге дистрибутивов конфигурации web-сервера:
+![image](https://user-images.githubusercontent.com/1051804/142213817-b93916f6-0ad7-4fa5-a731-d7e658efef2c.png)
+
+
 
 [1]: https://github.com/santens-devs/1cApacheWebService/files/7555017/vrd.pdf "VRD"
