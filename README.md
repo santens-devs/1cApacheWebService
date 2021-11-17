@@ -62,7 +62,7 @@
 - 1c-enterprise83-ws_`version`_amd64.deb
 
 Далее нужно распаковать данные deb-пакеты в каталог версии дистрибутива. Находясь в каталоге версии дистрибутива нужно выполнить комманды:
-```sh
+```bash
 dpkg-deb --extract 1c-enterprise83-common_`version`_amd64.deb .
 dpkg-deb --extract 1c-enterprise83-server_`version`_amd64.deb .
 dpkg-deb --extract 1c-enterprise83-ws_`version`_amd64.deb .
@@ -76,9 +76,9 @@ dpkg-deb --extract 1c-enterprise83-ws_`version`_amd64.deb .
 ![image](https://user-images.githubusercontent.com/1051804/142216518-16915c73-b2bc-48df-8d43-2d48c5928f84.png)
 
 нужно выполнить команду создания ссылки на дистрибутив платформы 1С.
-```sh
+```bash
 unlink ./platform
-ln -s ./distrib/version/opt/1C/v8.3/x86_64 ./platform
+ln -s ./distrib/`version`/opt/1C/v8.3/x86_64 ./platform
 ```
 
 После чего можно перезагружать либо службу `sudo systemctl restart apache2.service` либо ОС целиком `sudo reboot`.
