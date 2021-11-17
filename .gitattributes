@@ -1,3 +1,6 @@
 *.apache*.conf linguist-language=ApacheConf
 wsap24.conf linguist-language=ApacheConf
 wsap24.load linguist-language=ApacheConf
+.1ccr linguist-language=XML
+.vrd linguist-language=XML
+
