@@ -87,7 +87,7 @@ dpkg-deb --extract 1c-enterprise83-ws_`version`_amd64.deb .
 нужно выполнить команду создания ссылки на дистрибутив платформы 1С.
 ```bash
 unlink ./platform
-ln -s ./distrib/`version`/opt/1C/v8.3/x86_64 ./platform
+ln -s -b ./distrib/`version`/opt/1C/v8.3/x86_64 ./platform
 ```
 
 После чего можно перезагружать либо службу `sudo systemctl restart apache2.service` либо ОС целиком `sudo reboot`.
