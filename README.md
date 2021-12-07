@@ -9,7 +9,7 @@
 ## Доступ в хранилище конфигураций 1С по HTTP
 ![image](https://user-images.githubusercontent.com/1051804/142206963-eeee9871-cad2-4d86-a90a-c80b9e1e8615.png)
 
-Данная конфигурация реализует возможность подключения к crs по http. Файлы настроек подключений хранятся в каталоге [crs-files](./crs-files).
+Данная конфигурация реализует возможность подключения к crs по http. Файлы настроек подключений хранятся в каталоге [crs-files](crs-files).
 
 Конфигурационный файл Web-сервиса для работы с удаленным хранилищем может иметь произвольное имя (*.1ccr), формат XML и содержит единственный узел с произвольным именем и атрибутом connectString ‑ в этом атрибуте указывается адрес сервера хранилища в схеме TCP.
 
@@ -94,6 +94,29 @@ dpkg-deb --extract 1c-enterprise83-ws_`version`_amd64.deb .
 unlink ./platform
 ln -s -b ./distrib/`version`/opt/1C/v8.3/x86_64 ./platform
 ```
+
+Проверим набор модулей Apache2:
+
+```shell
+ls -lha --color /etc/apache2/mods-enabled/
+    итого 8
+    alias.conf -> ../mods-available/alias.conf
+    alias.load -> ../mods-available/alias.load
+    authz_core.load -> ../mods-available/authz_core.load
+    dir.conf -> ../mods-available/dir.conf
+    dir.load -> ../mods-available/dir.load
+    mpm_event.conf -> ../mods-available/mpm_event.conf
+    mpm_event.load -> ../mods-available/mpm_event.load
+    rewrite.load -> ../mods-available/rewrite.load
+    wsap24.conf -> ../mods-available/wsap24.conf
+    wsap24.load -> ../mods-available/wsap24.load
+```
+
+лишние отключаем:
+```shell
+a2dismod [module_name]
+```
+
 
 После чего можно перезагружать либо службу `sudo systemctl restart apache2.service` либо ОС целиком `sudo reboot`.
 
