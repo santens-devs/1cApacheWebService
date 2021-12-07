@@ -99,7 +99,6 @@ ln -s -b ./distrib/`version`/opt/1C/v8.3/x86_64 ./platform
 
 ```shell
 ls -lha --color /etc/apache2/mods-enabled/
-    итого 8
     alias.conf -> ../mods-available/alias.conf
     alias.load -> ../mods-available/alias.load
     authz_core.load -> ../mods-available/authz_core.load
