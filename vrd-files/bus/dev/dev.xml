@@ -1,7 +1,7 @@
 <point xmlns="http://v8.1c.ru/8.2/virtual-resource-system"
        xmlns:xs="http://www.w3.org/2001/XMLSchema"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       base="/bus/dev" enable="false"
+       base="/bus_dev" enable="true"
        ib="Srvr=tcp://10.12.1.16:1642;Ref=bus_dev;">
 
     <standardOdata enable="true" reuseSessions="dontuse" sessionMaxAge="20" poolTimeout="5" poolSize="100"/>
