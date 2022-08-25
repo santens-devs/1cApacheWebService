@@ -1,0 +1,60 @@
+graph TB
+
+    classDef root_folders fill:GreenYellow;
+    classDef non_root_folders fill:LightCyan;
+    classDef link_from_OS fill:SandyBrown;
+    classDef folders fill:MistyRose;
+
+    subgraph oem
+    apache(fa:fa-folder /home/oem/esina/apache):::root_folders
+    apache ---- | Доступные модули | mods[fa:fa-folder mods-available]:::non_root_folders
+    apache ---- | Доступные сайты | sites[fa:fa-folder sites-available]:::non_root_folders
+    apache ---- | Настройки клиентов 1С-баз |vrd[fa:fa-folder vrd-files]:::folders
+    
+    mods ---- | Настройка модуля apache | wsap24.conf[fa:fa-file wsap24.conf]:::link_from_OS
+    mods --- | Загрузка модуля apache | wsap24.load[fa:fa-file wsap24.load]:::link_from_OS
+
+    sites --- | Модули конфигурации основного сайта | def[fa:fa-folder 000-default]:::folders
+    sites ---- | Конфигурация основного сайта | def.conf[fa:fa-file 000-default.conf]:::link_from_OS
+
+    def --- | Доступные конфигурации 1С-баз | available[fa:fa-folder available]:::folders
+    def --- | Активные конфигурации 1С-баз | enabled[fa:fa-folder enabled]:::folders
+    def --- | Общие настройки конфигураций 1С-баз | directory.conf[fa:fa-file directory.apache2.conf]
+
+    available === | Файлы конфигураций 1С-баз | file.conf[fa:fa-file *.apache2.conf]
+    enabled === | Ссылки на файлы конфигураций 1С-баз | link.conf[fa:fa-link *.conf]
+    
+    link.conf -.-> | Вкл/Выкл с помощью ссылки | file.conf
+
+    vrd === | Каталоги клинтов боевой 1С-базы | prod[fa:fa-folder *.prod]:::folders
+    prod --- | Каталог клиента 1С-базы разработки | dev[fa:fa-folder dev]:::folders
+    
+    prod --- | Настройка клиента боевой 1С-базы | prod.vrd[fa:fa-file prod.xml]
+    dev --- | Настройка клиента 1С-базы разработки | dev.vrd[fa:fa-file dev.xml]
+    
+    def.conf ---> link.conf
+    file.conf --> directory.conf
+    file.conf --> prod.vrd
+    file.conf --> dev.vrd
+    end
+
+    subgraph etc
+    apache2(fa:fa-folder /etc/apache2):::root_folders
+    apache2 ----- sites-available[fa:fa-folder sites-available]:::non_root_folders
+    apache2 ---- mods-available[fa:fa-folder mods-available]:::non_root_folders
+
+    mods-available --- link.wsap24.conf[fa:fa-link wsap24.conf]:::link_from_OS
+    mods-available ---- link.wsap24.load[fa:fa-link wsap24.load]:::link_from_OS
+    sites-available --- etc.def.conf[fa:fa-link 000-default.conf]:::link_from_OS
+    end
+    link.wsap24.conf -.....-> wsap24.conf
+    link.wsap24.load -.....-> wsap24.load
+
+    etc.def.conf -.....-> def.conf
+    
+ 
+    distrib(fa:fa-folder /home/oem/esina/distrib):::root_folders ======== version[fa:fa-folder version/opt/1C/v8.3/x86_64]:::folders
+    platform(fa:fa-link /home/oem/esina/platform):::root_folders -....-> version
+    
+    wsap24.load --------> platform
+ 
